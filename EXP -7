@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    char cipher[]="53‡‡†305))6*;...";
+    int freq[128]={0};
+
+    for(int i=0; cipher[i]; i++)
+        freq[(int)cipher[i]]++;
+
+    for(int i=0;i<128;i++)
+        if(freq[i]>0)
+            printf("%c -> %d\n",i,freq[i]);
+}
