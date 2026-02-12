@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(){
+    char text[500];
+    int freq[26]={0};
+
+    gets(text);
+    for(int i=0;text[i];i++)
+        if(text[i]>='A'&&text[i]<='Z')
+            freq[text[i]-'A']++;
+
+    for(int i=0;i<26;i++)
+        printf("%c = %d\n",i+'A',freq[i]);
+}
