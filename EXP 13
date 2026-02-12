@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int modInv(int a){
+    for(int i=1;i<26;i++)
+        if((a*i)%26==1) return i;
+    return -1;
+}
+
+int main(){
+    int P[2][2]={{7,4},{11,15}};   // plaintext matrix
+    int C[2][2]={{19,0},{20,22}};  // ciphertext matrix
+
+    int det = (P[0][0]*P[1][1]-P[0][1]*P[1][0])%26;
+    if(det<0) det+=26;
+    int invDet = modInv(det);
+
+    int Pinv[2][2];
+    Pinv[0][0]=(P[1][1]*invDet)%26;
+    Pinv[1][1]=(P[0][0]*invDet)%26;
+    Pinv[0][1]=(-P[0][1]*invDet)%26;
+    Pinv[1][0]=(-P[1][0]*invDet)%26;
+
+    printf("Recovered Key Matrix:\n");
+    for(int i=0;i<2;i++){
+        for(int j=0;j<2;j++){
+            int k=(C[i][0]*Pinv[0][j]+C[i][1]*Pinv[1][j])%26;
+            if(k<0) k+=26;
+            printf("%d ",k);
+        }
+        printf("\n");
+    }
+}
