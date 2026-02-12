@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int encrypt(int p,int k,int iv){
+    return ((p^iv)+k)%256;
+}
+
+int main(){
+    int P[]={10,20,30,40};
+    int C[4], iv=100, k=5;
+
+    for(int i=0;i<4;i++){
+        C[i]=encrypt(P[i],k,iv);
+        iv=C[i];
+    }
+
+    printf("CBC Ciphertext: ");
+    for(int i=0;i<4;i++)
+        printf("%d ",C[i]);
+}
