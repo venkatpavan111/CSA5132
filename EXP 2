@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char p[100], key[26] = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    int i;
+
+    printf("Enter plaintext: ");
+    gets(p);
+
+    for(i = 0; p[i]; i++) {
+        if(isalpha(p[i])) {
+            p[i] = key[toupper(p[i]) - 'A'];
+        }
+    }
+
+    printf("Ciphertext: %s", p);
+    return 0;
+}
