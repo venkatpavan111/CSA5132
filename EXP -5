@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char text[100];
+    int a,b,i;
+
+    printf("Enter plaintext: ");
+    gets(text);
+    printf("Enter a and b: ");
+    scanf("%d %d",&a,&b);
+
+    for(i=0;text[i];i++){
+        if(isalpha(text[i])){
+            int p=toupper(text[i])-'A';
+            int c=(a*p + b) % 26;
+            text[i]=c+'A';
+        }
+    }
+
+    printf("Ciphertext: %s",text);
+}
