@@ -1,0 +1,7 @@
+#include <stdio.h>
+
+int main(){
+    printf("First 24 bits from C register\n");
+    printf("Second 24 bits from D register\n");
+    return 0;
+}
