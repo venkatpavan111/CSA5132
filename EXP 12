@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    int K[2][2]={{9,4},{5,7}};
+    int P[2], C[2];
+
+    printf("Enter two letters (0-25): ");
+    scanf("%d%d",&P[0],&P[1]);
+
+    C[0]=(K[0][0]*P[0]+K[0][1]*P[1])%26;
+    C[1]=(K[1][0]*P[0]+K[1][1]*P[1])%26;
+
+    printf("Cipher: %d %d",C[0],C[1]);
+}
