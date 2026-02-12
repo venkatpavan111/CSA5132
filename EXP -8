@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char key[]="CIPHER";
+    char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char cipher[26]="";
+    int used[26]={0}, k=0;
+
+    for(int i=0; key[i]; i++){
+        if(!used[key[i]-'A']){
+            cipher[k++]=key[i];
+            used[key[i]-'A']=1;
+        }
+    }
+    for(int i=0;i<26;i++){
+        if(!used[i]) cipher[k++]=alphabet[i];
+    }
+
+    printf("Cipher Alphabet:\n%s\n", cipher);
+}
