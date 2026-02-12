@@ -1,0 +1,7 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double keys = tgamma(26); // 25!
+    printf("Total keys ≈ %e\n", keys);
+}
