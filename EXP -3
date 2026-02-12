@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+char matrix[5][5];
+int used[26];
+
+void generateMatrix(char key[]) {
+    int i, j, k=0;
+    memset(used,0,sizeof(used));
+    for(i=0; key[i]; i++) {
+        if(key[i]=='J') key[i]='I';
+        if(!used[key[i]-'A']) {
+            used[key[i]-'A']=1;
+            matrix[k/5][k%5]=key[i];
+            k++;
+        }
+    }
+    for(i=0;i<26;i++) {
+        if(i+'A'=='J') continue;
+        if(!used[i]) {
+            matrix[k/5][k%5]=i+'A';
+            k++;
+        }
+    }
+}
+
+int main() {
+    char key[]="CIPHER";
+    generateMatrix(key);
+
+    printf("Playfair Matrix:\n");
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++)
+            printf("%c ",matrix[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
